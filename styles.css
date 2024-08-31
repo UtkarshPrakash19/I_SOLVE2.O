@@ -1,0 +1,981 @@
+/* General Styles */
+/* Apply zero margin and padding, box-sizing border-box to all elements,
+   and set the default font to Roboto. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /* Uses Roboto font */
+}
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif; /* Ensures body text uses Roboto font */
+    background-color: rgb(9, 9, 23);
+}
+/* Navbar Styles */
+/* Style the navigation bar to be full-width, fixed at the top with an opaque background color,
+   and use flexbox for layout. */
+nav {
+    width: 102%;
+    height: 12%;
+    background-color: rgb(9, 9, 23); /* Opaque background color */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000; /* Ensures navbar stays on top of other elements */
+    box-shadow: 0 2px 4px rgb(9, 9, 23); /* Optional shadow for better visibility */
+}
+/* CSS for the logo image */
+.logo-img {
+    filter: invert(1); /* Inverts the colors of the image */
+    transform: scale(0.27); /* Scales the image to 27% of its original size */
+    position: relative; /* Positions the image relative to its normal position */
+    right: 175px; /* Moves the image 105px to the left from its original position */
+    top: 0px; /* Keeps the image at its original vertical position */
+    /* You can add more styles if needed, e.g., margins, borders */
+}
+
+/* Style the navigation links list */
+nav ul {
+    list-style: none; /* Removes bullet points */
+    display: flex;
+    gap: 0px; /* Space between links */
+    margin: 0;
+    padding: 0;
+}
+
+/* Style individual navigation list items */
+nav ul li {
+    display: inline; /* Ensures items are in a line */
+}
+
+/* Style the links in the navigation bar */
+nav ul li a {
+    color: #fff; /* White text color */
+    text-decoration: none; /* Removes underline */
+    font-size: 1. ; /* Adjusted font size for responsiveness */
+    padding: 5px 15px; /* Adjusted padding */
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+}
+
+/* Add glow effect, scale, and pop on hover */
+nav ul li a:hover {
+    color: #f0f0f0; /* Light gray text color on hover */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* Glowing effect */
+    transform: scale(1.1) translateY(-5px); /* Slightly larger and moves up */
+    animation: pop 0.3s ease; /* Apply pop effect */
+}
+
+/* Keyframes for the pop effect */
+@keyframes pop {
+    0% {
+        transform: scale(1) translateY(0); /* Initial state */
+    }
+    50% {
+        transform: scale(1.2) translateY(-10px); /* Pop up */
+    }
+    100% {
+        transform: scale(1.1) translateY(-5px); /* Final state */
+    }
+}
+
+/* Mobile Menu Button */
+/* Hide the menu button by default */
+.menu-button {
+    display: none;
+}
+@media (max-width: 1026px) {
+    nav ul {
+        display: flex;
+        flex-direction: row; /* Stack links horizontally */
+        position: relative;
+        top: 0; /* Reset position */
+        right: 0; /* Reset position */
+        background-color: rgb(9, 9, 23); /* Opaque background matching the navbar */
+        width: 100%;
+        padding: 10px;
+        transition: transform 0.3s ease;
+        transform: none; /* Reset transform */
+    }
+    
+    /* Adjust logo image for smaller screens */
+    .logo-img {
+        transform: scale(0.2); /* Scales the image to 20% of its original size */
+        right: 150px; /* Adjust position */
+    }
+
+    /* Style the hamburger menu button */
+   
+
+    /* Style individual list items in the dropdown menu */
+    nav ul li {
+        margin: 10px 0; /* Margin between items */
+        text-align: center; /* Center align text */
+    }
+
+    /* Adjust font sizes and padding for 1024px view */
+    nav ul li a {
+        font-size: 1.1rem; /* Adjust font size for 1024px breakpoint */
+        padding: 10px; /* Adjust padding */
+    }
+
+    /* Show the dropdown menu when active */
+    nav ul.active {
+        display: flex;
+        transform: translateY(0); /* Slide in from top */
+    }
+}
+@media (max-width: 768px) { /* Styles for mobile devices */
+    /* Style for navigation links in mobile view */
+    nav ul {
+        display: none; /* Hide links by default */
+        flex-direction: column;
+        position: absolute;
+        top: 85px; /* Position below the navbar */
+        right: 0;
+        background-color: #0c0323; /* Opaque background matching the navbar */
+        width: 100%;
+        padding: 10px;
+        transition: transform 0.3s ease; /* Smooth dropdown transition */
+        transform: translateY(-100%); /* Hide by default */
+    }
+    .logo-img {
+        filter: invert(1); /* Inverts the colors of the image */
+        transform: scale(0.2); /* Scales the image to 27% of its original size */
+        position: relative; /* Positions the image relative to its normal position */
+        right: 200px; /* Moves the image 105px to the left from its original position */
+        top: 0px; /* Keeps the image at its original vertical position */
+        /* You can add more styles if needed, e.g., margins, borders */
+    }
+    /* Show the dropdown menu when active */
+    nav ul.active {
+        display: flex;
+        transform: translateY(0); /* Slide in from top */
+    }
+
+    /* Style the hamburger menu button */
+    .menu-button {
+        display: block;
+        color: #fff; /* White color for the button */
+        font-size: 24px; /* Larger font size for visibility */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: text-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    }
+
+    /* Add glow effect and pop on hover */
+    .menu-button:hover {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* Glowing effect */
+        transform: scale(1.1); /* Slightly larger on hover */
+    }
+
+    /* Style individual list items in the dropdown menu */
+    nav ul li {
+        margin: 10px 0; /* Margin between items */
+        text-align: center; /* Center align text */
+    }
+
+    /* Adjust font sizes and padding for mobile view */
+    nav ul li a {
+        font-size: 0.9rem; /* Smaller font size for mobile */
+        padding: 10px; /* Adjust padding */
+    }
+}
+
+
+@media (max-width: 426px) { /* Styles for very small mobile devices */
+    /* Style for navigation links in mobile view */
+    nav ul {
+        display: none; /* Hide links by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Position below the navbar */
+        right: 0;
+        background-color: #0c0323; /* Opaque background matching the navbar */
+        width: 100%;
+        padding: 10px;
+        transition: transform 0.3s ease; /* Smooth dropdown transition */
+        transform: translateY(-100%); /* Hide by default */
+        z-index: 999; /* Ensure dropdown is on top */
+    }
+
+    /* Show the dropdown menu when active */
+    nav ul.active {
+        display: flex;
+        transform: translateY(0); /* Slide in from top */
+    }
+
+    /* Style the logo image for mobile devices */
+    .logo-img {
+        filter: invert(1); /* Inverts the colors of the image */
+        transform: scale(0.2); /* Scales the image to 20% of its original size */
+        position: absolute; /* Position it absolutely within the navbar */
+        left: -180px; /* Adjust as needed */
+        top: -205px; /* Adjust as needed */
+        z-index: 1000; /* Ensure it's on top */
+    }
+
+    /* Style the hamburger menu button */
+    .menu-button {
+        display: block; /* Ensure the button is visible */
+        color: #fff; /* White color for the button */
+        font-size: 28px; /* Larger font size for better visibility on small screens */
+        cursor: pointer; /* Pointer cursor on hover */
+        position: absolute; /* Position it absolutely */
+        right: 40px; /* Align with the right side of the navbar */
+        top: 25px; /* Align with the top of the navbar */
+        z-index: 1000; /* Ensure it's on top of other elements */
+        transition: text-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    }
+
+    /* Add glow effect and pop on hover */
+    .menu-button:hover {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* Glowing effect */
+        transform: scale(1.1); /* Slightly larger on hover */
+    }
+
+    /* Style individual list items in the dropdown menu */
+    nav ul li {
+        margin: 10px 0; /* Margin between items */
+        text-align: center; /* Center align text */
+    }
+
+    /* Adjust font sizes and padding for mobile view */
+    nav ul li a {
+        font-size: 0.9rem; /* Smaller font size for mobile */
+        padding: 10px; /* Adjust padding */
+    }
+}@media (max-width: 330px) { /* Styles for very small mobile devices */
+    /* Style for navigation links in mobile view */
+    nav ul {
+        display: none; /* Hide links by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Position below the navbar */
+        right: 0;
+        background-color: #0c0323; /* Opaque background matching the navbar */
+        width: 100%;
+        padding: 10px;
+        transition: transform 0.3s ease; /* Smooth dropdown transition */
+        transform: translateY(-100%); /* Hide by default */
+        z-index: 999; /* Ensure dropdown is on top */
+    }
+   
+    /* Show the dropdown menu when active */
+    nav ul.active {
+        display: flex;
+        transform: translateY(0); /* Slide in from top */
+    }
+
+    /* Style the logo image for mobile devices */
+    .logo-img {
+        filter: invert(1); /* Inverts the colors of the image */
+        transform: scale(0.2); /* Scales the image to 20% of its original size */
+        position: absolute; /* Position it absolutely within the navbar */
+        left: -180px; /* Adjust as needed */
+        top: -205px; /* Adjust as needed */
+        z-index: 1000; /* Ensure it's on top */
+    }
+
+    /* Style the hamburger menu button */
+    .menu-button {
+        display: block; /* Ensure the button is visible */
+        color: #fff; /* White color for the button */
+        font-size: 28px; /* Larger font size for better visibility on small screens */
+        cursor: pointer; /* Pointer cursor on hover */
+        position: absolute; /* Position it absolutely */
+        right: 40px; /* Align with the right side of the navbar */
+        top: 25px; /* Align with the top of the navbar */
+        z-index: 1000; /* Ensure it's on top of other elements */
+        transition: text-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    }
+
+    /* Add glow effect and pop on hover */
+    .menu-button:hover {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* Glowing effect */
+        transform: scale(1.1); /* Slightly larger on hover */
+    }
+
+    /* Style individual list items in the dropdown menu */
+    nav ul li {
+        margin: 10px 0; /* Margin between items */
+        text-align: center; /* Center align text */
+    }
+
+    /* Adjust font sizes and padding for mobile view */
+    nav ul li a {
+        font-size: 0.9rem; /* Smaller font size for mobile */
+        padding: 10px; /* Adjust padding */
+    }
+}
+/* Video Section Styles */
+/* Container for the video background */
+.vid-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Hide overflow */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content */
+    background-image: linear-gradient(rgba(12,3,51,0.3), rgba(12,3,51,0.3));
+}
+
+/* Style the video element */
+.vid-container video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire container */
+    z-index: -1; /* Send video behind other content */
+}
+
+/* Style the content overlay */
+.content {
+    text-align: center;
+    color: #fff; /* White text color */
+    z-index: 1; /* Ensure content is above the video */
+    padding: 0 10%; /* Adjust padding for responsiveness */
+}
+
+/* Style the container holding the heading and subheading */
+.text-container {
+    text-align: center;
+    color: #fff; /* White text color */
+    margin-bottom: 2rem; /* Space below the text */
+}
+
+.text-container h1 {
+    font-size: 22vw; /* Responsive font size */
+    margin-bottom: 1vw; /* Adjust margin for smaller screens */
+    color: transparent; /* Transparent text color for hollow effect */
+    -webkit-text-stroke: 2px #fff; /* White stroke for hollow text */
+    animation: hollowText 2s infinite; /* Animation for hollow effect */
+}
+
+.text-container .subheading {
+    font-size: 4rem; /* Adjust size as needed */
+    font-weight: bold; /* Make the text bold */
+    color: #fff; /* White text color */
+    margin-top: 1rem; /* Space above the subheading */
+    text-shadow: none; /* No shadow effect */
+}
+
+/* Keyframes for the hollow text animation */
+@keyframes hollowText {
+    0%, 50% {
+        color: transparent; /* Hollow text */
+        -webkit-text-stroke-width: 2px; /* Thick white border for visibility */
+    }
+    25%, 75% {
+        color: #fff; /* Solid white text */
+        -webkit-text-stroke-width: 0; /* No border */
+    }
+}
+
+/* Button Styles */
+/* Ensure the .content container centers its children */
+.content {
+    text-align: center; /* Center text and inline elements */
+}
+
+/* Button Styles */
+button {
+    background-color:#26303cad; /* Bright orange background color */
+    color: #fff; /* White text color */
+    border:rgba(255, 255, 255, 0.6); /* Remove default border */
+    border-radius: 50px; /* Fully rounded corners for capsule shape */
+    padding: 20px 40px; /* Increased space inside the button */
+    font-size: 1.5rem; /* Increased font size for the button text */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    text-transform: uppercase; /* Uppercase text */
+    margin-top: 1rem; /* Space above the button */
+    outline: none; /* Remove outline on focus */
+    display: inline-flex; /* Inline-flex for aligning image and text */
+    align-items: center; /* Center items vertically */
+    gap: 15px; /* Increased space between image and text */
+    justify-content: center; /* Center content horizontally */
+    
+}
+
+/* Style the large icon inside the button */
+.button-icon {
+    width: 30px; /* Increased width */
+    height: 30px; /* Increased height */
+}
+
+/* Style the text inside the button */
+.button-text {
+    display: flex;
+    align-items: center; /* Center align text and icon vertically */
+    gap: 8px; /* Increased space between text and small icon */
+}
+
+/* Style the small icon for "Unstop" */
+.icon-small {
+    width: 50px; /* Increased width */
+    height: 50px; /* Increased height */
+}
+
+/* Change background color and scale on hover */
+button:hover {
+    background-color: #26303cad; /* Darker orange on hover */
+    transform: scale(1.12); /* Slightly larger on hover */
+}
+
+/* Add focus styles for accessibility */
+button:focus {
+    outline: 3px solid rgb(255, 255, 255); /* White outline for focus state */
+    outline-offset: 2px; /* Offset the outline from the button */
+}
+
+/* Add active styles for button press */
+button:active {
+    background-color: #26303cad; /* Even darker orange when pressed */
+    transform: scale(1); /* Reset scale */
+}
+.highlight {
+    position: relative;
+    display: inline-block;
+    color: #fefefe;
+    transition: color 0.3s ease-in-out; /* Improved transition */
+    z-index: 50;
+}
+
+.highlight::before {
+    content: '';
+    position: absolute;
+    background-color: rgb(0, 132, 255);
+    border-radius: 60%;
+    width: 35px;
+    height: 35px;
+    left: -4px; 
+    top: -4px; 
+    bottom: -3px;
+    z-index: -1;
+    transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out; /* Improved transition */
+}
+/* Ensure no gap between video and the next section */
+.vid-container {
+    margin-bottom: 0; /* Remove margin at the bottom of the video container */
+}
+
+/* Home Section Styles */
+.home-section {
+    padding: 5px 20px; /* Padding for the section */
+    background-color: rgb(9,9,23); /* Dark background color to match the video */
+    text-align: center; /* Center-align text */
+    margin-top: 0; /* Remove space above the section to eliminate gap */
+    border-top: 1px solid rgb(9,9,23); /* Light border at the top */
+}
+
+/* Default styles for larger screens */
+/* Default styles for large screens */
+.home-section h2 {
+    font-size: 4.8rem; /* Font size for heading */
+    font-weight: 600; /* Semi-bold weight */
+    margin-bottom: 0rem; /* Space below the heading */
+    color: rgb(255, 255, 255); /* Color for the heading */
+    transform: scale(0.8); /* Scale down for larger screens */
+    transition: font-size 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}.home-section p {
+    font-size: 1.5rem; /* Font size for the paragraph text */
+    line-height: 1.6; /* Line height for readability */
+    color: rgb(255, 255, 255); /* Lighter gray text color for readability against the dark background */
+    max-width: 1000px; /* Maximum width of the paragraph */
+    margin: 0 auto; /* Center-align paragraph text */
+    padding: 0 10px; /* Padding for responsive text */
+}
+@media (max-width: 768px) {
+    .home-section p {
+        font-size: .9rem; /* Font size for the paragraph text */
+        line-height: 1.6; /* Line height for readability */
+        color: rgb(255, 255, 255); /* Lighter gray text color for readability against the dark background */
+        max-width: 1000px; /* Maximum width of the paragraph */
+        margin: 0 auto; /* Center-align paragraph text */
+        padding: 0 10px; /* Padding for responsive text */
+    }
+}
+/* Media query for screens 768px and below */
+@media (max-width: 426px) {
+    .home-section h2 {
+        font-size: 4.5rem; /* Smallest font size */
+        transform: scale(0.8); /* Adjust scaling */
+    }
+    .home-section p {
+        font-size: .9rem; /* Font size for the paragraph text */
+        line-height: 1.6; /* Line height for readability */
+        color: rgb(255, 255, 255); /* Lighter gray text color for readability against the dark background */
+        max-width: 1000px; /* Maximum width of the paragraph */
+        margin: 0 auto; /* Center-align paragraph text */
+        padding: 0 10px; /* Padding for responsive text */
+    }
+}
+@media (max-width: 330px) {
+    .home-section h2 {
+        font-size: 2rem; /* Smallest font size */
+        transform: scale(1); /* Adjust scaling */
+    }
+    .home-section p {
+        font-size: .6rem; /* Font size for the paragraph text */
+        line-height: 1.6; /* Line height for readability */
+        color: rgb(255, 255, 255); /* Lighter gray text color for readability against the dark background */
+        max-width: 1000px; /* Maximum width of the paragraph */
+        margin: 0 auto; /* Center-align paragraph text */
+        padding: 0 10px; /* Padding for responsive text */
+    }
+}
+
+
+
+/* Container for the countdown timer */
+.container {
+    display: flex;
+    align-items: center;
+    padding: 40px 35px; /* Padding around the section */
+    background-color: rgb(9, 9, 23); /* Match background color with home section */
+    text-align: left; /* Left-align text */
+    margin-top: 0; /* Remove space above the section */
+    position: relative; /* Position relative for the rocket animation */
+}
+
+/* Content of the countdown timer */
+.content1 {
+    flex: 1;
+    text-align: left; /* Left-align text within this section */
+}
+
+.content1 h1 {
+    font-size: 4.5rem; /* Font size for heading */
+    font-weight: 600; /* Semi-bold weight */
+    color: #ffffff; /* White color for the heading for better contrast */
+    margin-bottom: 1rem; /* Space below the heading */
+}
+
+.content1 .deadline {
+    display: flex;
+    justify-content: flex-start; /* Align items to the start of the flex container */
+    gap: 20px; /* Space between countdown elements */
+}
+
+.deadline div {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items vertically */
+}
+
+.deadline p {
+    font-size: 2rem; /* Font size for countdown numbers */
+    font-weight: bold; /* Bold text for numbers */
+    color: #ffffff; /* White color for the numbers */
+    margin: 0; /* Remove default margin */
+}
+
+.deadline span {
+    font-size: 1rem; /* Font size for labels */
+    color: #ddd; /* Light gray color for labels to match home section text */
+}
+
+.timer-container {
+    position: relative;
+    width: 33%; /* Adjust width as needed */
+    height: 300px; /* Adjust height as needed */
+    overflow: hidden; /* Ensures no overflow */
+    display: flex;
+    align-items: center; /* Center align vertically */
+    justify-content: flex-end; /* Align content to the right */
+}
+
+.video {
+    max-width: 45%; /* Adjust to reduce size as needed */
+    max-height: 70%; /* Adjust to reduce size as needed */
+    object-fit: contain; /* Ensure aspect ratio is maintained */
+    margin-right: 20px; /* Space from the right edge */
+    filter: invert(1); /* Applies color inversion */
+    transform: rotate(-60deg) translateX(37%) translateY(43%); /* Rotates -60 degrees and moves right by 37% , up by 43% */
+    transition: transform 0.3s ease; /* Optional: Adds smooth transition for transform changes */
+}
+/* Media queries for small screens */
+@media (max-width: 767px) {
+    .video-frame {
+        display: none; /* Hide the video frame on small screens */
+    }
+}
+/* General container styles */
+/* General styles */
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background:rgb(9, 9, 23);
+} */
+
+/* Timeline section */
+/* Timeline section styling */
+.time {
+    padding: 60px;
+    background-color: rgb(9, 9, 23); /* Timeline section background */
+    align-content: center;
+    margin-left: -41px;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1433px; /* Adjust as needed */
+    margin: auto;
+    padding: 0;
+    border-radius: 5px;
+    margin-left: 10px;
+    z-index: 0;
+}
+
+/* Heading styles */
+.t-head {
+    font-size: 4.5rem;
+    margin-bottom: 75px;
+    color: rgb(255, 255, 255); /* Heading color */
+}
+
+/* Container styles for each timeline item */
+.container1 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: rgb(9, 9, 23); /* Background color for each timeline item */
+    border-radius: 6px; /* Rounded corners */
+    opacity: 0; /* Start with hidden text boxes */
+    animation: fadeIn .5s forwards; /* Apply fade-in animation */
+}
+/* Image styles */
+.container1 img {
+    position: absolute;
+    width: 40px;
+    border-radius: 50%;
+    z-index: 1; /* Ensure images appear above the timeline line */
+    animation: fadeIn 1s ease-in-out; /* Change 'fadeIn' to your chosen animation name */
+}
+/* Position adjustments for left and right containers */
+.left-cont {
+    width: 50%; /* Half width for left containers */
+    margin-right: auto; /* Align to the left */
+    margin-left: 10px;
+    display: flex;
+    justify-content: flex-end; /* Align items to the end */
+}
+
+.right-cont {
+    width: 50%; /* Half width for right containers */
+    margin-left: auto; /* Align to the right */
+    margin-right: -60px;
+    display: flex;
+    justify-content: flex-start; /* Align items to the start */
+}
+
+/* Specific positioning for images in left and right containers */
+.left-cont img {
+    right: -23px; /* Adjust position for left container */
+    top: 60px;
+    z-index: 3;
+}
+
+.right-cont img {
+    left: -67px; /* Adjust position for right container */
+    top: 50px;
+    z-index: 3;
+}
+
+/* Text box styles */
+.text-box {
+    padding: -5px 30px;
+    background: rgb(9, 9, 23); /* Background color for text box */
+    position: relative;
+    border-radius: 5px;
+    width: 90%; /* Full width within container */
+    max-width: 600px; /* Max width */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.913);  */
+    margin-left: auto; /* Align text box */
+    margin-right: auto; /* Center text box */
+    height: 200px;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Space out children */
+}
+
+/* Heading and paragraph styles inside text box */
+.text-box h2 {
+    font-weight: 600;
+    color: rgb(255, 255, 255); /* Heading color inside text box */
+    margin: 0;
+    font-size: 2.8rem; /* Adjust size */
+}
+
+.text-box small {
+    display: block; /* Better spacing */
+    margin-bottom: 15px;
+    color: rgb(255, 255, 255); /* Small text color */
+    font-size: 1rem; /* Adjust size */
+}
+
+/* Paragraph container styles */
+.paragraph-container {
+    margin-top: 10px;
+    flex-grow: 1; /* Allow paragraph container to grow */
+}
+
+/* Paragraph styles */
+.paragraph-container p {
+    color: rgb(255, 255, 255); /* Paragraph text color */
+    font-size: 1.2rem; /* Adjust size */
+    margin: 5px; /* Remove margin */
+    line-height: 1.5; /* Line height for readability */
+}
+
+/* Arrow styles */
+.left-cont-arrow, .right-cont-arrow {
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 55px;
+    z-index: 1;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+}
+
+.left-cont-arrow {
+    border-left: 15px solid rgb(255, 255, 255); /* Left arrow color */
+    right: -20px;
+}
+
+.right-cont-arrow {
+    border-right: 15px solid rgb(255, 255, 255); /* Right arrow color */
+    left: -30px;
+}
+
+/* Timeline line animation */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 0;
+    background: rgb(255, 255, 255); /* Timeline line color */
+    top: 0;
+    left: 50%;
+    margin-left: 10px;
+    z-index: -1; /* Lower z-index so line is behind images */
+    border-radius: 5px;
+    animation: moveline 8.5s linear forwards; /* Match duration to the number of boxes */
+}
+
+@keyframes moveline {
+    0% { height: 0; }
+    100% { height: 100%; }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+/* Sequential appearance of text boxes */
+.container1:nth-child(1) { animation-delay: 0.5s; }
+.container1:nth-child(2) { animation-delay: 1.5s; }
+.container1:nth-child(3) { animation-delay: 2.5s; }
+.container1:nth-child(4) { animation-delay: 3.5s; }
+.container1:nth-child(5) { animation-delay: 4.5s; }
+.container1:nth-child(6) { animation-delay: 5.5s; }
+.container1:nth-child(7) { animation-delay: 6.5s; }
+.container1:nth-child(8) { animation-delay: 7.5s; }
+.container1:nth-child(9) { animation-delay: 8.5s; }
+
+/* General styles for the prizes section */
+.prizes-section {
+    padding: 20px;
+    background-color: rgb(9, 9, 23); /* Light background for the section */
+    text-align: center;
+}
+
+.prizes-heading {
+    font-size: 4.5rem; /* Heading font size */
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* Grid container for the prizes */
+.prizes-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust number of columns based on container width */
+    gap: 20px; /* Space between grid items */
+    justify-content: center; /* Center grid items horizontally */
+}
+
+.prize-block {
+    background-color: rgb(9, 9, 23); /* White background for each prize block */
+    
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+}
+
+.prize-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center text within the content */
+}
+
+.prize-gif {
+    max-width: 100%; /* Responsive image width */
+    height: auto;
+    border-radius: 4px; /* Rounded corners for GIF */
+    margin-bottom: 10px;
+}
+
+.prize-info h2 {
+    font-size: 1.5rem; /* Heading size for each prize */
+    margin: 10px 0;
+    color: white;
+}
+
+.prize-info p {
+    font-size: 1rem; /* Default font size for description */
+    color: #ffffff; /* Darker grey text */
+}
+/* Styles for the sponsors section */
+.sponsors-section {
+    padding: 20px; /* Add some padding around the section */
+    background-color: rgb(9, 9, 23); /* Light background color */
+}
+
+/* Heading style for the sponsors section */
+.sponsors-heading {
+    text-align: center;
+    font-size: 4.5rem; /* Heading size */
+    margin-bottom: 20px; /* Space below heading */
+    color: white;
+}
+
+/* Container for each sponsor category */
+.sponsor-category {
+    margin-bottom: 40px; /* Space between categories */
+    color: white;
+}
+
+.sponsor-category h2 {
+    font-size: 2.5rem; /* Heading size for categories */
+    text-align: center;
+    margin-bottom: 20px; /* Space below category heading */
+}
+
+.sponsor-category .sponsor-emoji {
+    font-size: 3rem; /* Size of emojis */
+}
+
+/* Grid layout for sponsor images */
+/* Styles for the sponsor images grid */
+/* Container for sponsor images with grid layout */
+/* Container for sponsor images with grid layout */
+.sponsor-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns */
+    gap: 30px; /* Space between images */
+    justify-content: center; /* Center images horizontally */
+    align-items: center; /* Center images vertically within their grid cells */
+    justify-items: center; /* Center each grid item horizontally */
+}
+
+/* Styles for the individual sponsor images */
+.sponsor-images img {
+    max-width: 100%; /* Make the image fit within the grid cell */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure images are contained within their cells */
+    display: block; /* Ensure images are displayed as block elements */
+    margin: 0 auto; /* Center images horizontally within their container */
+}
+
+/* Footer Styles */
+/* Style for the footer */
+/* Footer Container */
+footer {
+    background-color: rgb(9,9,23); /* Dark background */
+}
+
+/* Social Icons Container */
+.socialIcons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0; /* Padding around icons */
+}
+
+/* Social Icons */
+.socialIcons a {
+    text-decoration: none;
+    padding: 15px; /* Space around icons */
+    background-color: white; /* White background for icons */
+    margin: 10px; /* Space between icons */
+    border-radius: 50%; /* Circle shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s ease, transform 0.3s ease; /* Smooth transition for background color and transform */
+}
+
+/* Icon Styles */
+.socialIcons a i {
+    font-size: 2em; /* Icon size */
+    color: rgb(9,9,23); /* Icon color */
+    opacity: 0.9; /* Slight transparency */
+    transition: color .1 sec ease-in; /* Smooth transition for icon color */
+}
+
+/* Hover Effects */
+.socialIcons a:hover {
+    background-color: rgb(255, 255, 255); /* Darker background on hover */
+    transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+.socialIcons a:hover i {
+    color: rgb(255, 255, 255); /* White icon color on hover */
+}
+
+/* Footer Bottom Section */
+.footerBottom {
+    background-color: rgb(9,9,23);
+    padding: 20px;
+    text-align: center;
+}
+
+.footerBottom p {
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 2s ease forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
