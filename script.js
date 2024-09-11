@@ -8,29 +8,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const subheading = document.querySelector('.subheading');
     const timerImage = document.querySelector('.timer');
 
-    // Toggle menu visibility on mobile
     menuButton.addEventListener('click', function() {
         navLinks.classList.toggle('active');
     });
 
-    // Initial adjustments
     adjustTextStyles(); 
     adjustButtonStyles(); 
     adjustTimerSectionStyles();
-    startCountdown(); // Initialize the countdown timer
+    startCountdown(); 
 });
 function adjustTextStyles() {
     const heading = document.querySelector('.content h1');
     const subheading = document.querySelector('.subheading');
     const width = window.innerWidth;
 
-    if (width < 768) { // Mobile screen size
+    if (width < 768) { 
         heading.style.fontSize = '22vw'; 
         heading.style.marginBottom = '1.6px'; 
 
         subheading.style.fontSize = '3rem'; 
         subheading.style.marginTop = '1rem'; 
-    } else { // Desktop screen size
+    } else { 
         heading.style.fontSize = '10rem'; 
         heading.style.marginBottom = '8px'; 
 
@@ -44,12 +42,12 @@ function adjustButtonStyles() {
     const buttonIcon = document.querySelector('.button-icon');
     const width = window.innerWidth;
 
-    if (width < 768) { // Mobile screen size
+    if (width < 768) { 
         button.style.padding = '10px 20px'; 
         button.style.fontSize = '1rem'; 
         buttonIcon.style.width = '40px'; 
         buttonIcon.style.height = '40px'; 
-    } else { // Desktop screen size
+    } else { 
         button.style.padding = '20px 40px'; 
         button.style.fontSize = '1.5rem'; 
         buttonIcon.style.width = '30px'; 
@@ -64,27 +62,27 @@ function adjustTimerSectionStyles() {
     const timerImage = document.querySelector('.timer');
     const width = window.innerWidth;
 
-    if (width < 768) { // Mobile screen size
-        container.style.padding = '20px'; // Adjust padding
-        heading.style.fontSize = '3rem'; // Smaller font size for heading
+    if (width < 768) { 
+        container.style.padding = '20px';
+        heading.style.fontSize = '3rem'; 
         deadlineItems.forEach(item => {
-            item.style.fontSize = '1.2rem'; // Smaller font size for deadline items
+            item.style.fontSize = '1.2rem'; 
         });
-        timerImage.style.maxWidth = '150px'; // Smaller image size
-        container.style.textAlign = 'center'; // Center align text
-    } else { // Desktop screen size
-        container.style.padding = '50px 20px'; // Default padding
-        heading.style.fontSize = '4.5rem'; // Default font size for heading
+        timerImage.style.maxWidth = '150px'; 
+        container.style.textAlign = 'center'; 
+    } else { 
+        container.style.padding = '50px 20px'; 
+        heading.style.fontSize = '4.5rem'; 
         deadlineItems.forEach(item => {
-            item.style.fontSize = '2rem'; // Default font size for deadline items
+            item.style.fontSize = '2rem'; 
         });
-        timerImage.style.maxWidth = '200px'; // Default image size
-        container.style.textAlign = 'left'; // Left align text
+        timerImage.style.maxWidth = '200px'; 
+        container.style.textAlign = 'left';
     }
 }
 
 function startCountdown() {
-    const deadline = new Date('2024-08-31T23:59:59').getTime(); // Set your deadline date and time here
+    const deadline = new Date('2024-08-31T23:59:59').getTime(); 
 
     function updateCountdown() {
         const now = new Date().getTime();
@@ -95,7 +93,7 @@ function startCountdown() {
             document.getElementById('hours').innerHTML = '00';
             document.getElementById('minutes').innerHTML = '00';
             document.getElementById('seconds').innerHTML = '00';
-            return; // Stop the timer when countdown is finished
+            return; 
         }
 
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -113,15 +111,13 @@ function startCountdown() {
         return number < 10 ? '0' + number : number;
     }
 
-    updateCountdown(); // Run once at the start
-    setInterval(updateCountdown, 1000); // Update every second
+    updateCountdown(); 
+    setInterval(updateCountdown, 1000);
 }
 
-// Ensure the countdown starts when the page has fully loaded
 window.onload = startCountdown;
 
 
-// Call adjustments on page load and on window resize
 window.addEventListener('load', function() {
     adjustTextStyles();
     adjustButtonStyles();
