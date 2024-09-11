@@ -1,6 +1,4 @@
-/* General Styles */
-/* Apply zero margin and padding, box-sizing border-box to all elements,
-   and set the default font to Roboto. */
+
 * {
     margin: 0;
     padding: 0;
